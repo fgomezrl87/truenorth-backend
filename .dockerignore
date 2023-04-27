@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cache
+*.egg-info/
+*.pyc
+*.log
+*.coverage
+.coverage.*
+.tox/
+pytest.xml
+.idea/
+.pytest_cache/
