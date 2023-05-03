@@ -1,0 +1,24 @@
+name: True North Backend
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v3
+      - name: Build latest
+        run: docker build -f Dockerfile -t registry.digitalocean.com/truenorth-registry/truenorth-backend:${GITHUB_REF##*/} .
+      - name: Provide doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Login to Digital Ocean Registry
+        run: doctl registry login --expiry-seconds 600
+      - name: Push to Digital Ocean Registry
+        run: docker push registry.digitalocean.com/truenorth-registry/truenorth-backend:${GITHUB_REF##*/}
