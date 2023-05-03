@@ -24,3 +24,12 @@ $ docker run -d -p 8000:8000 true-north-fast-api:latest
 
 # Documentation
 After having the project running, go to your browser to http://127.0.0.1:8000/docs
+
+# Cloud
+There is a deployed version using terraform. You can find it in: https://truenorth-backend-z2fzc.ondigitalocean.app/docs
+
+# Unit tests
+To execute unit tests, execute next command:
+```
+$ pytest tests/
+```
